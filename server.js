@@ -1,10 +1,17 @@
 import mongoose from "mongoose";
 import app from "./app.js";
+import { MONGO_URI, PORT } from "./config/config.js";
 
-const PORT=3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+}).on('error', (err) => {
+  console.error(`Failed to start server: ${err.message}`);
+});
 
-mongoose.connect("mongodb://localhost:27017/books")
-.then(()=>console.log("Base de datos conectada"))
-.catch((error)=>console.log(error));
-
-app.listen(PORT, ()=>console.log('Servidor funcionando.'));
+mongoose
+  .connect(MONGO_URI)
+  .then(() => console.log("Base de datos conectada"))
+  .catch((error) => console.log(error));
+  
+ 
+  

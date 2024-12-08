@@ -23,7 +23,7 @@ userSchema.pre('save',async function (next) {
 });
 
 //comparar contraseñas
-userSchema.methods.matchPassword=async function(candidatePassword) {
+    userSchema.methods.matchPassword=async function(candidatePassword) {
     //compara la contraseña ingresada con la que está guardada en base de datos
     return await bcrypt.match(candidatePassword, this.password);
 };
